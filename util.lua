@@ -246,33 +246,6 @@ function util.random_str(len,lower_case)
 end
 
 
-local phone_mac = {
-    
-    [133]=1,[149]=1,[153]=1,[173]=1,[177]=1,[180]=1,[181]=1, [189]=1,[190]=1,
-    [191]=1,[199]=1,
-    
-    [130]=1,[131]=1,[132]=1,[145]=1,[155]=1,[156]=1,[166]=1,[171]=1,[175]=1,
-    [176]=1,[185]=1,[186]=1,[196]=1,
-   
-    [134]=1,[135]=1,[136]=1,[137]=1,[138]=1,[139]=1,[147]=1,[150]=1,[151]=1,
-    [152]=1,[157]=1,[158]=1,[159]=1,[172]=1,[178]=1,[182]=1,[183]=1,[184]=1,
-    [187]=1,[188]=1,[197]=1,[198]=1,
-   
-    [192]=1,
- 
-    [170] = 1,
-}
---check valid phonenubmer, only support zh phone number.
-function util.check_valid_phone(num)
-    if type(num) ~= "string" then return end
-    if utf8.len(num) ~= 11 then return end
-    local mac, other = string.match(num, "(%d%d%d)(%d%d%d%d%d%d%d%d)")
-    mac,other = tonumber(mac), tonumber(other)
-    if not (mac and other) then return end
-    if not phone_mac[mac] then return end
-
-    return true
-end
 
 
 function util.check_include_chinese_and_number_and_letter(s)
